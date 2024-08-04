@@ -11,13 +11,17 @@ const end = DateTime.fromJSDate(new Date(event.end))
 const duration = Interval.fromDateTimes(start, end)
 
 const formattedTime =
-  start.toLocaleString(DateTime.TIME_SIMPLE) +
+  start.toLocaleString({ hour: "numeric", minute: "numeric" }) +
   "–" +
-  end.toLocaleString(DateTime.TIME_SIMPLE)
+  end.toLocaleString({
+    hour: "numeric",
+    minute: "numeric",
+    timeZoneName: "short",
+  })
 ---
 
 <div
-  class="my-2 tracking-tight leading-tight flex max-w-prose flex-col gap-4 rounded-2xl p-4 transition-all duration-200 hover:shadow-sm bg-stone-50 hover:bg-stone-100"
+  class="tracking-tight leading-tight flex max-w-prose flex-col gap-4 rounded-2xl p-4 transition-all duration-200 bg-stone-50 hover:bg-stone-100"
 >
   <h2>
     <a
@@ -25,18 +29,23 @@ const formattedTime =
       href={event.link}>{event.title}</a
     >
   </h2>
-  <p class="text-sm uppercase rounded-3xl font-medium text-slate-500">
-    {event.eventType}
-  </p>
 
-  <p class="text-slate-500">
+  <p>
     {event.notes}
   </p>
 
-  <p>Organiser: {event.organiser.map((o) => o.name).join(", ")}</p>
   <p>
-    Price: <span
-      class="bg-slate-200 text-sm px-2 uppercase rounded-xl font-bold"
+    <span class="text-slate-500"> Organised by </span><span class="font-medium"
+      >{event.organiser.map((o) => o.name).join(", ")}</span
+    >
+  </p>
+
+  <p class="flex gap-2 items-center text-sm">
+    <span class="block uppercase rounded-3xl font-mono text-slate-500">
+      {event.eventType}
+    </span>
+
+    <span class="block bg-slate-200 px-2 uppercase rounded-xl font-bold"
       >{event.fee > 0 ? `AU$${event.fee}` : "Free"}</span
     >
   </p>
@@ -44,21 +53,37 @@ const formattedTime =
   <div class="flex flex-wrap justify-between">
     <div class="flex-1">
       <p class="text-bold text-lg">{event.venueName}</p>
-      <p>
+      <p class="text-sm text-slate-500">
         {
           duration.length("day") > 1 ? (
             <>
-              <p class="text-sm">
-                Start: {start.toLocaleString(DateTime.DATE_FULL)}
-              </p>
-              <p class="text-sm text-slate-500">
-                End: {end.toLocaleString(DateTime.DATE_FULL)}
-              </p>
+              <span class="block">
+                Starts{" "}
+                {start.toLocaleString({
+                  weekday: "long",
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                  hour: "numeric",
+                })}
+              </span>
+              <span class="block">
+                Ends{" "}
+                {end.toLocaleString({
+                  weekday: "long",
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                  hour: "numeric",
+                })}
+              </span>
             </>
           ) : (
             <>
-              <div>{start.toLocaleString(DateTime.DATE_HUGE)}</div>
-              <div class="text-slate-500">{formattedTime}</div>
+              <span class="block">
+                {start.toLocaleString(DateTime.DATE_HUGE)}
+              </span>
+              <span class="block">{formattedTime}</span>
             </>
           )
         }
@@ -72,7 +97,7 @@ const formattedTime =
         ) : event.mapLink ? (
           <li>
             <a class="underline text-slate-400" href={event.mapLink}>
-              map
+              view map
             </a>
           </li>
         ) : null
