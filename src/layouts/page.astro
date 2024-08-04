@@ -1,0 +1,18 @@
+---
+import "@fontsource-variable/bricolage-grotesque"
+const { title } = Astro.props
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body
+    class="mx-auto min-h-screen max-w-prose py-20 px-4 bg-stone-50 text-textFg font-sans pattern-dots pattern-gray-300 pattern-bg-white pattern-size-2 pattern-opacity-40 bg-[length:1rem_1rem] bg-square"
+  >
+    <slot />
+  </body>
+</html>
