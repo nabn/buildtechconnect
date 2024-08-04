@@ -1,5 +1,32 @@
 ---
 import PageLayout from "../layouts/page.astro"
+import { datoClient } from "../lib/api-client"
+import Event from "../components/event.astro"
+
+const {
+  data: { allEvents, _allEventsMeta },
+} = await datoClient
+  .post("", {
+    json: {
+      query: `{
+        allEvents {
+          id
+          title
+          notes
+          start
+          end
+          link
+          _status
+          _firstPublishedAt
+        }
+
+        _allEventsMeta {
+          count
+        }
+      }`,
+    },
+  })
+  .json()
 ---
 
 <PageLayout>
@@ -7,5 +34,15 @@ import PageLayout from "../layouts/page.astro"
     <h1 class="font-bold text-2xl antialiased text-textFg">BuildTechConnect</h1>
     <p>Upcoming events related to building and construction technology.</p>
   </header>
-  <section class="flex flex-col gap-4"></section>
+  <section>
+    <ul role="list">
+      {
+        allEvents.map((event) => (
+          <li>
+            <Event event={event} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </PageLayout>

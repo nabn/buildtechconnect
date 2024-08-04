@@ -1,0 +1,42 @@
+---
+import { Interval, DateTime } from "luxon"
+import Prose from "./prose.astro"
+
+const { event } = Astro.props
+const start = DateTime.fromISO(event.start)
+const end = DateTime.fromISO(event.end)
+const duration = Interval.fromDateTimes(start, end)
+
+const formattedTime =
+  start.toLocaleString(DateTime.TIME_SIMPLE) +
+  "–" +
+  end.toLocaleString(DateTime.TIME_SIMPLE)
+---
+
+<div
+  class="my-2 flex max-w-prose flex-col gap-4 rounded-lg p-4 transition-all duration-200 hover:cursor-pointer hover:bg-accent hover:shadow-sm"
+>
+  <h2 class="text-2xl font-bold">
+    <a href={event.link} class="text-blue-500 underline">{event.title}</a>
+  </h2>
+  <Prose>
+    {event.notes}
+  </Prose>
+  <div>
+    {
+      duration.length("day") > 1 ? (
+        <div>
+          <p class="text-sm">
+            Start: {start.toLocaleString(DateTime.DATE_FULL)}
+          </p>
+          <p class="text-sm">End: {end.toLocaleString(DateTime.DATE_FULL)}</p>
+        </div>
+      ) : (
+        <div class="text-md">
+          <div>{start.toLocaleString(DateTime.DATE_FULL)}</div>
+          <div>{formattedTime}</div>
+        </div>
+      )
+    }
+  </div>
+</div>
