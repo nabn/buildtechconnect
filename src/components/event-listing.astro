@@ -11,12 +11,17 @@ const end = DateTime.fromJSDate(new Date(event.end))
 const duration = Interval.fromDateTimes(start, end)
 
 const formattedTime =
-  start.toLocaleString({ hour: "numeric", minute: "numeric" }) +
+  start.toLocaleString({
+    hour: "numeric",
+    minute: "numeric",
+    timeZone: "Australia/Sydney",
+  }) +
   "–" +
   end.toLocaleString({
     hour: "numeric",
     minute: "numeric",
     timeZoneName: "short",
+    timeZone: "Australia/Sydney",
   })
 ---
 
