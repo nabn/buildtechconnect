@@ -28,6 +28,7 @@ const {
           mapLink
           eventType
           venueName
+          streetAddress
           organiser {
             name
           }
@@ -43,9 +44,11 @@ const {
 ---
 
 <PageLayout>
-  <header class="text-center flex flex-col gap-2">
-    <h1 class="font-bold text-4xl antialiased text-textFg font-sans">
-      BuildTech<span class="text-stone-400">·</span>Connect
+  <header class="text-center flex flex-col gap-2 px-2">
+    <h1
+      class="font-bold text-3xl md:text-4xl antialiased text-textFg font-sans"
+    >
+      Build<span class="text-stone-800">Tech</span>Connect
     </h1>
     <p class="text text-slate-500">
       Upcoming events related to building and housing industry.
@@ -71,9 +74,7 @@ const {
 
   <footer class="mt-20 py-4 border-t-2 text-center text-slate-500 font-thin">
     <div class="text-sm">DISCLAIMER</div>
-    <p class="">
-      We try our best to present accurate information. Please consult the event
-      page for most up-to-date information.
-    </p>
+    <p>Details might have changed since the event was published.</p>
+    <p>Visit the organiser's event details page for the latest updates.</p>
   </footer>
 </PageLayout>

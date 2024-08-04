@@ -11,6 +11,7 @@ export type Event = {
   eventType: string
   venueName: string
   organiser: Array<{ name: string }>
+  streetAddress: string
   _status: string
   _firstPublishedAt: string
 }

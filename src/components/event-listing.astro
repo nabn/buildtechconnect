@@ -26,79 +26,99 @@ const formattedTime =
 ---
 
 <div
-  class="tracking-tight leading-tight flex max-w-prose flex-col gap-4 rounded-2xl p-4 transition-all duration-200 bg-stone-50 hover:bg-stone-100"
+  class="tracking-tight leading-tight flex max-w-prose flex-col gap-2 rounded-2xl p-4 transition-all duration-200 bg-stone-50 hover:bg-stone-100"
 >
-  <h2>
-    <a
-      class="text-xl font-bold text-slate-800 underline hover:cursor-pointer hover:bg-accent"
-      href={event.link}>{event.title}</a
-    >
-  </h2>
 
-  <p>
-    {event.notes}
+<h2>
+  <a
+    class="text-xl font-bold text-slate-800 underline underline-offset-2 hover:cursor-pointer hover:bg-accent"
+    href={event.link}>{event.title}</a
+  >
+</h2>
+
+  <p class='mt-2'>
+  {event.notes}
   </p>
 
-  <p>
-    <span class="text-slate-500"> Organised by </span><span class="font-medium"
-      >{event.organiser.map((o) => o.name).join(", ")}</span
-    >
-  </p>
-
-  <p class="flex gap-2 items-center text-sm">
-    <span class="block uppercase rounded-3xl font-mono text-slate-500">
+  <p class="flex gap-2 justify-center items-center text-sm">
+    <span class="uppercase rounded-3xl font-mono text-slate-500">
       {event.eventType}
     </span>
 
-    <span class="block bg-slate-200 px-2 uppercase rounded-xl font-bold"
+    <span class="block bg-zinc-200 px-2 uppercase rounded-xl font-bold"
       >{event.fee > 0 ? `AU$${event.fee}` : "Free"}</span
     >
   </p>
 
-  <div class="flex flex-wrap justify-between">
-    <div class="flex-1">
-      <p class="text-bold text-lg">{event.venueName}</p>
-      <p class="text-sm text-slate-500">
+  <div>
+    <p class="text-slate-500">
+      Organised by <span class="font-medium"
+        >{event.organiser.map((o) => o.name).join(", ")}</span
+      >
+    </p>
+  </div>
+  <div class="flex flex-col md:flex-row flex-wrap justify-between">
+    <div>
+      <div>
+        <p class="text-bold text-lg">{event.venueName}</p>
         {
-          duration.length("day") > 1 ? (
-            <>
-              <span class="block">
-                Starts{" "}
-                {start.toLocaleString({
-                  weekday: "long",
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                  hour: "numeric",
-                })}
-              </span>
-              <span class="block">
-                Ends{" "}
-                {end.toLocaleString({
-                  weekday: "long",
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                  hour: "numeric",
-                })}
-              </span>
-            </>
-          ) : (
-            <>
-              <span class="block">
-                {start.toLocaleString(DateTime.DATE_HUGE)}
-              </span>
-              <span class="block">{formattedTime}</span>
-            </>
+          event.isOnline ? null : (
+            <p>
+              <a
+                href={event.mapLink}
+                class="underline underline-offset-2 decoration-zinc-400"
+              >
+                {event.streetAddress}
+              </a>
+            </p>
           )
         }
-      </p>
+      </div>
+      <div>
+        <p class="text-sm text-slate-500">
+          {
+            duration.length("day") > 1 ? (
+              <>
+                <span class="block">
+                  Starts{" "}
+                  {start.toLocaleString({
+                    weekday: "long",
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                    hour: "numeric",
+                  })}
+                </span>
+                <span class="block">
+                  Ends{" "}
+                  {end.toLocaleString({
+                    weekday: "long",
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                    hour: "numeric",
+                  })}
+                </span>
+              </>
+            ) : (
+              <>
+                <span class="block">
+                  {start.toLocaleString(DateTime.DATE_HUGE)}
+                </span>
+                <span class="block">{formattedTime}</span>
+              </>
+            )
+          }
+        </p>
+      </div>
     </div>
-    <hr />
-    <ul class="flex-1 uppercase text-sm flex flex-col items-end">
+    <ul class="uppercase text-sm flex gap-2">
+      <li>
+        <a class="underline text-slate-500" href={event.link}>event details</a>
+      </li>
       {
         event.isOnline ? (
-          <p>Online</p>
+          <li>Online</li>
         ) : event.mapLink ? (
           <li>
             <a class="underline text-slate-400" href={event.mapLink}>
@@ -107,9 +127,6 @@ const formattedTime =
           </li>
         ) : null
       }
-      <li>
-        <a class="underline text-slate-500" href={event.link}> event details</a>
-      </li>
     </ul>
   </div>
 </div>
