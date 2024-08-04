@@ -13,34 +13,29 @@ const formattedTime =
 ---
 
 <div
-  class="my-2 tracking-tight leading-tight flex max-w-prose flex-col gap-4 rounded-2xl p-4 transition-all duration-200 hover:shadow-sm bg-slate-50 hover:bg-sky-50"
+  class="my-2 tracking-tight leading-tight flex max-w-prose flex-col gap-4 rounded-2xl p-4 transition-all duration-200 hover:shadow-sm bg-stone-50 hover:bg-stone-100"
 >
-  <h2 class="flex flex-wrap gap-2 justify-between items-center">
+  <h2>
     <a
       class="text-xl font-bold text-slate-800 underline hover:cursor-pointer hover:bg-accent"
       href={event.link}>{event.title}</a
     >
-
-    <span
-      class="bg-slate-300 text-sm px-3 py-1 uppercase rounded-3xl font-bold"
-    >
-      {event.eventType}
-    </span>
   </h2>
+  <p class="text-sm uppercase rounded-3xl font-medium text-slate-500">
+    {event.eventType}
+  </p>
 
-  <p class="tracking-tight text-slate-500">
+  <p class="text-slate-500">
     {event.notes}
   </p>
 
-  <div class="flex flex-col md:flex-row flex-wrap justify-between">
-    <p>Organiser: Engineers Australia</p>
-    <p>
-      Price: <span
-        class="bg-green-200 text-sm px-2 uppercase rounded-xl font-bold"
-        >{event.fee > 0 ? `AU$${event.fee}` : "Free"}</span
-      >
-    </p>
-  </div>
+  <!-- <p>Organiser: Engineers Australia</p> -->
+  <p>
+    Price: <span
+      class="bg-slate-200 text-sm px-2 uppercase rounded-xl font-bold"
+      >{event.fee > 0 ? `AU$${event.fee}` : "Free"}</span
+    >
+  </p>
 
   <div class="flex justify-between">
     <div class="flex-1">
@@ -65,8 +60,8 @@ const formattedTime =
         }
       </p>
     </div>
-
-    <ul class="flex-1 border-s-2 pl-2 flex flex-col items-end justify-end">
+    <hr />
+    <ul class="flex-1 uppercase text-sm flex flex-col items-end justify-end">
       {
         event.isOnline ? (
           <p>Online</p>
