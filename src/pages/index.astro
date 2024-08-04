@@ -45,32 +45,31 @@ const {
 
 <PageLayout>
   <header class="text-center flex flex-col gap-2 px-2">
-    <h1
-      class="font-bold text-3xl md:text-4xl antialiased text-textFg font-sans"
-    >
-      Build<span class="text-stone-800">Tech</span>Connect
+    <h1 class="font-bold font-sans text-4xl antialiased text-textFg">
+      Build<span class="text-sky-600">·</span>Tech<span class="text-sky-600"
+        >·</span
+      >Connect
     </h1>
     <p class="text text-slate-500">
       Upcoming events related to building and housing industry.
     </p>
-  </header>
-  <section>
-    <p class="text-center my-6 text-slate-500">
+
+    <p class="text-center text-slate-500">
       There {_allEventsMeta.count > 1 ? "are" : "is"}
       <span class="text-sky-600 text-2xl font-bold">{_allEventsMeta.count}</span
       >
       upcoming event{_allEventsMeta.count > 1 ? "s" : ""}.
     </p>
-    <ul role="list" class="flex flex-col gap-4">
-      {
-        allEvents.map((event) => (
-          <li>
-            <EventListing event={event} />
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+  </header>
+  <ul role="list" class="flex flex-col gap-4 mt-4">
+    {
+      allEvents.map((event) => (
+        <li>
+          <EventListing event={event} />
+        </li>
+      ))
+    }
+  </ul>
 
   <footer class="mt-20 py-4 border-t-2 text-center text-slate-500 font-thin">
     <div class="text-sm">DISCLAIMER</div>
