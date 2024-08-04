@@ -113,14 +113,14 @@ const formattedTime =
     </div>
     <ul class="uppercase text-sm flex gap-2">
       <li>
-        <a class="underline text-slate-500" href={event.link}>event details</a>
+        <a class="underline underline-offset-2 text-slate-500" href={event.link}>event details</a>
       </li>
       {
         event.isOnline ? (
           <li>Online</li>
         ) : event.mapLink ? (
           <li>
-            <a class="underline text-slate-400" href={event.mapLink}>
+            <a class="underline underline-offset-2 text-slate-400" href={event.mapLink}>
               view map
             </a>
           </li>
