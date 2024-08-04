@@ -5,14 +5,12 @@ export type Event = {
   start: string
   end: string
   link: string
-  fee: string
+  fee: number
   isOnline: boolean
   mapLink: string
   eventType: string
   venueName: string
-  organiser: {
-    id: string
-  }
+  organiser: Array<{ name: string }>
   _status: string
   _firstPublishedAt: string
 }

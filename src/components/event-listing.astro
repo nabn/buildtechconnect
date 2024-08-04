@@ -1,6 +1,10 @@
 ---
 import { Interval, DateTime } from "luxon"
+import type { Event } from "../schema/event"
 
+type Props = {
+  event: Event
+}
 const { event } = Astro.props
 const start = DateTime.fromJSDate(new Date(event.start))
 const end = DateTime.fromJSDate(new Date(event.end))
@@ -29,7 +33,7 @@ const formattedTime =
     {event.notes}
   </p>
 
-  <!-- <p>Organiser: Engineers Australia</p> -->
+  <p>Organiser: {event.organiser.map((o) => o.name).join(", ")}</p>
   <p>
     Price: <span
       class="bg-slate-200 text-sm px-2 uppercase rounded-xl font-bold"
@@ -37,7 +41,7 @@ const formattedTime =
     >
   </p>
 
-  <div class="flex justify-between">
+  <div class="flex flex-wrap justify-between">
     <div class="flex-1">
       <p class="text-bold text-lg">{event.venueName}</p>
       <p>
@@ -61,7 +65,7 @@ const formattedTime =
       </p>
     </div>
     <hr />
-    <ul class="flex-1 uppercase text-sm flex flex-col items-end justify-end">
+    <ul class="flex-1 uppercase text-sm flex flex-col items-end">
       {
         event.isOnline ? (
           <p>Online</p>
