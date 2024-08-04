@@ -1,0 +1,86 @@
+---
+import { Interval, DateTime } from "luxon"
+
+const { event } = Astro.props
+const start = DateTime.fromJSDate(new Date(event.start))
+const end = DateTime.fromJSDate(new Date(event.end))
+const duration = Interval.fromDateTimes(start, end)
+
+const formattedTime =
+  start.toLocaleString(DateTime.TIME_SIMPLE) +
+  "–" +
+  end.toLocaleString(DateTime.TIME_SIMPLE)
+---
+
+<div
+  class="my-2 tracking-tight leading-tight flex max-w-prose flex-col gap-4 rounded-2xl p-4 transition-all duration-200 hover:shadow-sm bg-slate-50 hover:bg-sky-50"
+>
+  <h2 class="flex flex-wrap gap-2 justify-between items-center">
+    <a
+      class="text-xl font-bold text-slate-800 underline hover:cursor-pointer hover:bg-accent"
+      href={event.link}>{event.title}</a
+    >
+
+    <span
+      class="bg-slate-300 text-sm px-3 py-1 uppercase rounded-3xl font-bold"
+    >
+      {event.eventType}
+    </span>
+  </h2>
+
+  <p class="tracking-tight text-slate-500">
+    {event.notes}
+  </p>
+
+  <div class="flex flex-col md:flex-row flex-wrap justify-between">
+    <p>Organiser: Engineers Australia</p>
+    <p>
+      Price: <span
+        class="bg-green-200 text-sm px-2 uppercase rounded-xl font-bold"
+        >{event.fee > 0 ? `AU$${event.fee}` : "Free"}</span
+      >
+    </p>
+  </div>
+
+  <div class="flex justify-between">
+    <div class="flex-1">
+      <p class="text-bold text-lg">{event.venueName}</p>
+      <p>
+        {
+          duration.length("day") > 1 ? (
+            <>
+              <p class="text-sm">
+                Start: {start.toLocaleString(DateTime.DATE_FULL)}
+              </p>
+              <p class="text-sm text-slate-500">
+                End: {end.toLocaleString(DateTime.DATE_FULL)}
+              </p>
+            </>
+          ) : (
+            <>
+              <div>{start.toLocaleString(DateTime.DATE_HUGE)}</div>
+              <div class="text-slate-500">{formattedTime}</div>
+            </>
+          )
+        }
+      </p>
+    </div>
+
+    <ul class="flex-1 border-s-2 pl-2 flex flex-col items-end justify-end">
+      {
+        event.isOnline ? (
+          <p>Online</p>
+        ) : event.mapLink ? (
+          <li>
+            <a class="underline text-slate-400" href={event.mapLink}>
+              map
+            </a>
+          </li>
+        ) : null
+      }
+      <li>
+        <a class="underline text-slate-500" href={event.link}> event details</a>
+      </li>
+    </ul>
+  </div>
+</div>

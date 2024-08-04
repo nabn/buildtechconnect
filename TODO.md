@@ -1,0 +1,4 @@
+- [ ] time is incorrect
+- [ ] organiser
+- [ ] events order
+- [X] filter out events in the past

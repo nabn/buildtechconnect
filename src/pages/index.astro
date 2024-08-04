@@ -1,7 +1,10 @@
 ---
 import PageLayout from "../layouts/page.astro"
 import { datoClient } from "../lib/api-client"
-import Event from "../components/event.astro"
+import EventListing from "../components/event-listing.astro"
+import type { Event } from "../schema/event"
+
+const today = new Date().toISOString().split("T")[0]
 
 const {
   data: { allEvents, _allEventsMeta },
@@ -9,40 +12,65 @@ const {
   .post("", {
     json: {
       query: `{
-        allEvents {
+        _allEventsMeta(filter: { start: { gte: "${today}" } }) {
+          count
+        }
+
+        allEvents(filter: { start: { gte: "${today}" } }) {
           id
           title
           notes
           start
           end
           link
+          fee
+          isOnline
+          mapLink
+          eventType
+          venueName
+          organiser {
+            id
+          }
           _status
           _firstPublishedAt
-        }
-
-        _allEventsMeta {
-          count
         }
       }`,
     },
   })
-  .json()
+  .json<{
+    data: { allEvents: Array<Event>; _allEventsMeta: { count: number } }
+  }>()
 ---
 
 <PageLayout>
   <header class="text-center flex flex-col gap-2">
-    <h1 class="font-bold text-2xl antialiased text-textFg">BuildTechConnect</h1>
-    <p>Upcoming events related to building and construction technology.</p>
+    <h1 class="font-bold text-4xl antialiased text-textFg font-sans">
+      Build.Tech.Connect
+    </h1>
+    <p class="text-lg">
+      Upcoming events related to building and housing industry.
+    </p>
   </header>
-  <section>
+  <section class="mt-8">
+    <p class="text-center text-slate-500">
+      There {_allEventsMeta.count > 1 ? "are" : "is"}
+      <span class="text-sky-500">{_allEventsMeta.count}</span> upcoming event{
+        _allEventsMeta.count > 1 ? "s" : ""
+      }.
+    </p>
     <ul role="list">
       {
         allEvents.map((event) => (
           <li>
-            <Event event={event} />
+            <EventListing event={event} />
           </li>
         ))
       }
     </ul>
   </section>
+
+  <footer class="pt-40">
+    Disclaimer: We try our best to present accurate information, but please
+    consult the event page for most up-to-date information.
+  </footer>
 </PageLayout>
