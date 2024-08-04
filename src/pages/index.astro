@@ -12,11 +12,11 @@ const {
   .post("", {
     json: {
       query: `{
-        _allEventsMeta(filter: { start: { gte: "${today}" } }) {
+      _allEventsMeta(filter: { start: { gte: "${today}" } }) {
           count
         }
 
-        allEvents(filter: { start: { gte: "${today}" } }) {
+        allEvents(filter: { start: { gte: "${today}" } }, orderBy: start_ASC) {
           id
           title
           notes
