@@ -43,8 +43,9 @@ const formattedTime =
       {event.eventType}
     </span>
 
-    <span class="block bg-zinc-200 px-2 uppercase rounded-xl font-bold"
-      >{event.fee > 0 ? `AU$${event.fee}` : "Free"}</span
+    <span
+      class="block bg-zinc-200 px-2 uppercase rounded-xl font-bold"
+      aria-label="Event fee">{event.fee > 0 ? `AU$${event.fee}` : "Free"}</span
     >
   </p>
 
