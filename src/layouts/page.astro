@@ -1,6 +1,7 @@
 ---
-import "@fontsource-variable/bricolage-grotesque"
 const { title } = Astro.props
+import bricolageGrotesqueNormal from "@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-400-normal.woff2?url"
+import bricolageGrotesqueBold from "@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff2?url"
 ---
 
 <html lang="en">
@@ -18,6 +19,53 @@ const { title } = Astro.props
     />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+      href={bricolageGrotesqueNormal}
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+      href={bricolageGrotesqueBold}
+    />
+    <style>
+      /* bricolage-grotesque-latin-400-normal */
+      @font-face {
+        font-family: "Bricolage Grotesque";
+        font-style: normal;
+        font-display: swap;
+        font-weight: 400;
+        src:
+          url(@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-400-normal.woff2)
+            format("woff2"),
+          url(@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-400-normal.woff)
+            format("woff");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+          U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      /* bricolage-grotesque-latin-800-normal */
+      @font-face {
+        font-family: "Bricolage Grotesque";
+        font-style: normal;
+        font-display: swap;
+        font-weight: 800;
+        src:
+          url(@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff2)
+            format("woff2"),
+          url(@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff)
+            format("woff");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+          U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+    </style>
   </head>
   <body
     class="mx-auto min-h-screen max-w-prose py-20 px-2 md:px-4 bg-stone-50 text-textFg font-sans pattern-dots pattern-gray-300 pattern-bg-white pattern-size-2 pattern-opacity-40 bg-[length:1rem_1rem] bg-square"

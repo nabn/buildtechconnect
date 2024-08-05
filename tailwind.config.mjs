@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Bricolage Grotesque Variable", ...defaultTheme.fontFamily.sans],
+        sans: ["Bricolage Grotesque", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primaryBg: "hsl(8.57deg 100% 97.25%)",
