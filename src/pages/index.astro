@@ -4,7 +4,7 @@ import { datoClient } from "../lib/api-client"
 import EventListing from "../components/event-listing.astro"
 import type { Event } from "../schema/event"
 
-const today = new Date().toISOString().split("T")[0]
+const now = new Date().toISOString()
 
 const {
   data: { allEvents, _allEventsMeta },
@@ -12,11 +12,11 @@ const {
   .post("", {
     json: {
       query: `{
-        _allEventsMeta(filter: { start: { gte: "${today}" } }) {
+        _allEventsMeta(filter: { start: { gte: "${now}" } }) {
           count
         }
 
-        allEvents(filter: { start: { gte: "${today}" } }, orderBy: start_ASC, first: 100) {
+        allEvents(filter: { start: { gte: "${now}" } }, orderBy: start_ASC, first: 100) {
           id
           title
           notes
