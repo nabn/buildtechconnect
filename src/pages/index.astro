@@ -1,4 +1,11 @@
 ---
+const Minutes = 60
+const Hours = Minutes * 60
+Astro.response.headers.set(
+  "Cache-Control",
+  `public, max-age=${5 * Minutes}, s-maxage=${2 * Hours}`,
+)
+
 import PageLayout from "../layouts/page.astro"
 import { datoClient } from "../lib/api-client"
 import EventListing from "../components/event-listing.astro"
