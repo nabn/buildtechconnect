@@ -1,5 +1,5 @@
 ---
-import { getEntry } from "astro:content"
+import { getCollection, getEntry } from "astro:content"
 import PageLayout from "@/layouts/page.astro"
 import SiteFooter from "@/components/site-footer.astro"
 import SiteLogo from "@/components/site-logo.astro"
@@ -10,6 +10,12 @@ if (!slug) {
 
 const entry = await getEntry("newsletter", slug)
 const rendered = await entry?.render()
+
+export const getStaticPaths = async () =>
+  (await getCollection("newsletter")).map((post) => ({
+    params: { slug: post.slug },
+    props: { entry: post },
+  }))
 ---
 
 <PageLayout title={entry?.slug}>
