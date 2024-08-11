@@ -10,9 +10,11 @@ import SiteFooter from "@/components/site-footer.astro"
   <ul role="list" class="flex flex-col gap-4 mt-4">
     {
       allPosts.map((post) => (
-        <li class="bg-stone-50 p-4 rounded-lg">
+        <li class="tracking-tight leading-tight flex max-w-prose flex-col gap-2 rounded-2xl p-4 transition-all duration-200 bg-stone-50 hover:bg-stone-100">
           <a href={`/newsletter/${post.slug}`}>
-            <h2 class="text-xl font-semibold">{post.data.title}</h2>
+            <h2 class="text-xl font-semibold text-slate-800 underline underline-offset-2 hover:cursor-pointer hover:bg-accent">
+              {post.data.title}
+            </h2>
             <p class="text-lg">
               {DateTime.fromJSDate(new Date(post.data.date)).toLocaleString(
                 DateTime.DATE_HUGE,
