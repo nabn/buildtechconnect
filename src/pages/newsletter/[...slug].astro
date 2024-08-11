@@ -2,7 +2,6 @@
 import { getCollection, getEntry } from "astro:content"
 import PageLayout from "@/layouts/page.astro"
 import SiteFooter from "@/components/site-footer.astro"
-import SiteLogo from "@/components/site-logo.astro"
 const slug = Astro.params.slug
 if (!slug) {
   throw new Error("No slug provided")
@@ -19,10 +18,8 @@ export const getStaticPaths = async () =>
 ---
 
 <PageLayout title={entry?.slug}>
-  <article class="prose bg-stone-50 p-4">
+  <article class="prose bg-stone-50 p-4 rounded-lg">
     {rendered && <rendered.Content />}
   </article>
-  <SiteFooter>
-    <SiteLogo />
-  </SiteFooter>
+  <SiteFooter />
 </PageLayout>

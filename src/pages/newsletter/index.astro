@@ -10,9 +10,9 @@ import SiteFooter from "@/components/site-footer.astro"
   <ul role="list" class="flex flex-col gap-4 mt-4">
     {
       allPosts.map((post) => (
-        <li>
+        <li class="bg-stone-50 p-4 rounded-lg">
           <a href={`/newsletter/${post.slug}`}>
-            <h2 class="text-2xl font-bold">{post.data.title}</h2>
+            <h2 class="text-xl font-semibold">{post.data.title}</h2>
             <p class="text-lg">
               {DateTime.fromJSDate(new Date(post.data.date)).toLocaleString(
                 DateTime.DATE_HUGE,
