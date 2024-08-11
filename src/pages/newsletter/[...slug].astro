@@ -19,7 +19,7 @@ export const getStaticPaths = async () =>
 ---
 
 <PageLayout title={entry?.slug}>
-  <article class="prose lg:prose-xl">
+  <article class="prose bg-stone-50 p-4">
     {rendered && <rendered.Content />}
   </article>
   <SiteFooter>
