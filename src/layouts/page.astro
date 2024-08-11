@@ -1,7 +1,9 @@
 ---
 const { title } = Astro.props
-import bricolageGrotesqueNormal from "@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-400-normal.woff2?url"
-import bricolageGrotesqueBold from "@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff2?url"
+import Analytics from "../components/analytics.astro"
+import PageNav from "../components/page-nav.astro"
+import SiteLogo from "../components/site-logo.astro"
+import Fonts from "../components/fonts.astro"
 ---
 
 <html lang="en">
@@ -19,112 +21,23 @@ import bricolageGrotesqueBold from "@fontsource/bricolage-grotesque/files/bricol
     />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-      href={bricolageGrotesqueNormal}
-    />
-    <link
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-      href={bricolageGrotesqueBold}
-    />
-    <style>
-      /* bricolage-grotesque-latin-400-normal */
-      @font-face {
-        font-family: "Bricolage Grotesque";
-        font-style: normal;
-        font-display: swap;
-        font-weight: 400;
-        src:
-          url(@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-400-normal.woff2)
-            format("woff2"),
-          url(@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-400-normal.woff)
-            format("woff");
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
-          U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-
-      /* bricolage-grotesque-latin-800-normal */
-      @font-face {
-        font-family: "Bricolage Grotesque";
-        font-style: normal;
-        font-display: swap;
-        font-weight: 800;
-        src:
-          url(@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff2)
-            format("woff2"),
-          url(@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff)
-            format("woff");
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
-          U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-    </style>
+    <Fonts />
   </head>
   <body
     class="mx-auto min-h-screen max-w-prose py-20 px-2 md:px-4 bg-stone-50 text-textFg font-sans pattern-dots pattern-gray-300 pattern-bg-white pattern-size-2 pattern-opacity-40 bg-[length:1rem_1rem] bg-square"
   >
-    <slot />
-    <footer class="mt-20 py-4 border-t-2 text-center text-slate-500 font-thin">
-      <div class="text-sm">DISCLAIMER</div>
-      <p>
-        Details might have changed since the event was published. <br />
-        Visit the organiser's event details page for the latest updates.
-      </p>
+    <PageNav />
 
-      <p class="py-4">
-        Contact us at <a
-          href="mailto:buildtechconnect@gmail.com"
-          class="underline underline-offset-4">buildtechconnect@gmail.com</a
-        >
-      </p>
-      <p>
-        <a
-          href="https://buildtechconnect.substack.com/about"
-          class="underline underline-offset-4">Subscribe to our newsletter</a
-        >
-      </p>
-    </footer>
+    <header class="text-center flex flex-col gap-2 px-2">
+      <h1>
+        <SiteLogo />
+      </h1>
+    </header>
 
-    <div class="flex justify-center py-2">
-      <a
-        href="https://dashboard.simpleanalytics.com/buildtechconnect.com?utm_source=buildtechconnect.com&utm_content=badge"
-        referrerpolicy="origin"
-        target="_blank"
-        ><picture
-          ><source
-            srcset="https://simpleanalyticsbadges.com/buildtechconnect.com?mode=dark"
-            media="(prefers-color-scheme: dark)"
-          /><img
-            src="https://simpleanalyticsbadges.com/buildtechconnect.com?mode=light"
-            loading="lazy"
-            referrerpolicy="no-referrer"
-            crossorigin="anonymous"
-            alt="100% Privacy friendly analytics"
-          /></picture
-        ></a
-      >
+    <div class="flex-1 justify-center py-2">
+      <slot />
     </div>
 
-    <!-- 100% privacy-first analytics -->
-    <script
-      is:inline
-      async
-      defer
-      src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-
-    <noscript
-      ><img
-        src="https://queue.simpleanalyticscdn.com/noscript.gif"
-        alt="100% Privacy friendly analytics"
-        referrerpolicy="no-referrer-when-downgrade"
-      /></noscript
-    >
+    {!import.meta.env.DEV && <Analytics />}
   </body>
 </html>

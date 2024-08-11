@@ -1,0 +1,22 @@
+---
+import { getEntry } from "astro:content"
+import PageLayout from "@/layouts/page.astro"
+import SiteFooter from "@/components/site-footer.astro"
+import SiteLogo from "@/components/site-logo.astro"
+const slug = Astro.params.slug
+if (!slug) {
+  throw new Error("No slug provided")
+}
+
+const entry = await getEntry("newsletter", slug)
+const rendered = await entry?.render()
+---
+
+<PageLayout title={entry?.slug}>
+  <article class="prose lg:prose-xl">
+    {rendered && <rendered.Content />}
+  </article>
+  <SiteFooter>
+    <SiteLogo />
+  </SiteFooter>
+</PageLayout>

@@ -10,6 +10,8 @@ import PageLayout from "../layouts/page.astro"
 import { datoClient } from "../lib/api-client"
 import EventListing from "../components/event-listing.astro"
 import type { Event } from "../schema/event"
+import EventsFooter from "../components/events-footer.astro"
+import { pluralise } from "@/lib/text"
 
 const now = new Date().toISOString()
 
@@ -51,23 +53,18 @@ const {
 ---
 
 <PageLayout title="BuildTechConnect">
-  <header class="text-center flex flex-col gap-2 px-2">
-    <h1 class="font-bold font-sans text-4xl antialiased text-textFg">
-      Build<span class="text-sky-600">·</span>Tech<span class="text-sky-600"
-        >·</span
-      >Connect
-    </h1>
+  <div class="text-center flex flex-col gap-2 px-2">
     <p class="text text-slate-500">
       Upcoming events related to building and housing industry.
     </p>
 
     <p class="text-center text-slate-500">
-      There {_allEventsMeta.count > 1 ? "are" : "is"}
+      There {pluralise(_allEventsMeta.count, "is", "are")}
       <span class="text-sky-600 text-2xl font-bold">{_allEventsMeta.count}</span
       >
       upcoming event{_allEventsMeta.count > 1 ? "s" : ""}.
     </p>
-  </header>
+  </div>
   <ul role="list" class="flex flex-col gap-4 mt-4">
     {
       allEvents.map((event) => (
@@ -77,4 +74,5 @@ const {
       ))
     }
   </ul>
+  <EventsFooter />
 </PageLayout>
