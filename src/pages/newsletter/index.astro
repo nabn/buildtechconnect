@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content"
+import PageLayout from "@/layouts/page.astro"
+import { DateTime } from "luxon"
+const allPosts = await getCollection("newsletter")
+import SiteFooter from "@/components/site-footer.astro"
+---
+
+<PageLayout title="Newsletter">
+  <ul role="list" class="flex flex-col gap-4 mt-4">
+    {
+      allPosts.map((post) => (
+        <li>
+          <a href={`/newsletter/${post.slug}`}>
+            <h2 class="text-2xl font-bold">{post.data.title}</h2>
+            <p class="text-lg">
+              {DateTime.fromJSDate(new Date(post.data.date)).toLocaleString(
+                DateTime.DATE_HUGE,
+              )}
+            </p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <SiteFooter />
+</PageLayout>
