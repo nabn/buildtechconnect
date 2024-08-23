@@ -4,7 +4,7 @@ import PageLayout from "@/layouts/page.astro"
 import { DateTime } from "luxon"
 const allPosts = await getCollection("newsletter")
 import SiteFooter from "@/components/site-footer.astro"
-import NewsletterSubscriptionForm from "@/components/newsletter-subscription-form.astro"
+// import NewsletterSubscriptionForm from "@/components/newsletter-subscription-form.astro"
 ---
 
 <PageLayout title="Newsletter">
@@ -26,6 +26,6 @@ import NewsletterSubscriptionForm from "@/components/newsletter-subscription-for
       ))
     }
   </ul>
-  <NewsletterSubscriptionForm />
+  <!-- <NewsletterSubscriptionForm /> -->
   <SiteFooter />
 </PageLayout>
