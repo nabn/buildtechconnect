@@ -25,11 +25,10 @@ import SiteFooter from "@/components/site-footer.astro"
       ))
     }
   </ul>
-  <SiteFooter />
   <div class="w-full max-w-md mx-auto">
     <form
-      name="newsletter-subscription"
-      class="space-y-4"
+      name="newsletter"
+      class="space-y-4 text-center"
       method="POST"
       data-netlify="true"
     >
@@ -47,11 +46,11 @@ import SiteFooter from "@/components/site-footer.astro"
             name="email"
             placeholder="Enter your email"
             required
-            class="flex-grow px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+            class="flex-grow px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent"
           />
           <button
             type="submit"
-            class="px-4 py-2 text-sm font-medium text-white bg-slate-600 rounded-md hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
+            class="px-4 py-2 text-sm font-medium bg-stone-200 rounded-xl hover:bg-stone-300 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
           >
             Subscribe
           </button>
@@ -59,4 +58,5 @@ import SiteFooter from "@/components/site-footer.astro"
       </div>
     </form>
   </div>
+  <SiteFooter />
 </PageLayout>
