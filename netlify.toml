@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/subscribe"
+  to = "/"
+  status = 400
