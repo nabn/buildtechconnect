@@ -1,0 +1,38 @@
+---
+title: "September updates: Australian Building & Housing Industry"
+date: 2024-09-10
+slug: 2024-september
+tags:
+    - newsletter
+---
+
+Welcome to the September edition of Build.Tech.Connect, where we bring you the top five most relevant updates in the Australian building and housing industry. Stay ahead of the curve with just the essentials.
+
+## 1. [2024 Australian Apartment of the Year](https://hia.com.au/awards-and-events/australian-housing-awards/2024-australian-housing-award-winners/2024-hia-australian-apartment-of-the-year/2024-hia-australian-apartment-of-the-year)
+
+The 2024 HIA Australian Apartment of the Year, "Bronxx," is a luxurious waterfront penthouse featuring 360-degree views, a six-meter pool, and outdoor entertaining areas. With spacious interiors, sustainable design elements, and direct beach access, it combines elegance with environmental responsibility.
+
+[Read more](https://hia.com.au/awards-and-events/australian-housing-awards/2024-australian-housing-award-winners/2024-hia-australian-apartment-of-the-year/2024-hia-australian-apartment-of-the-year)
+
+## 2. [New Australian Standard](https://www.standards.org.au/news/safeguarding-young-swimmers-revised-swimming-pool-standard)
+
+Standards Australia has released a revised standard for swimming pool safety, AS 1926.1:2024, focusing on barriers to prevent access by young children. This revision introduces new requirements to enhance pool safety, ensuring more effective barriers to reduce the risk of drowning. These updates are essential for homeowners, pool installers, and local councils across the country. 
+
+[Read more](https://www.standards.org.au/news/safeguarding-young-swimmers-revised-swimming-pool-standard)
+
+## 3. [Building and Housing Policies](https://www.abcb.gov.au/news/2024/consultation-open-proposed-risk-based-building-product-registration-scheme)
+The Australian Building Codes Board (ABCB) has opened consultations for a proposed risk-based building product registration scheme. This initiative aims to improve product safety and accountability within the building supply chain. The consultation is open until October 3, 2024. Industry professionals are encouraged to provide feedback to help shape the final scheme.
+
+[Read more](https://www.abcb.gov.au/news/2024/consultation-open-proposed-risk-based-building-product-registration-scheme)
+
+## 4. [Building and Housing Economics](https://hia.com.au/our-industry/newsroom/economic-research-and-forecasting/2024/09/more-than-one-in-three-loans-issued-to-first-home-buyers)
+
+The latest housing industry report indicates that more First Home Buyers entering the market. Over one-third of new home loans are now being issued to first-home buyers, the highest proportion in recent years. This trend reflects various government incentives aimed at making housing more accessible and affordable for young Australians. It also indicates a shift in the housing market dynamics, with increasing demand from this demographic. 
+
+[Read more](https://hia.com.au/our-industry/newsroom/economic-research-and-forecasting/2024/09/more-than-one-in-three-loans-issued-to-first-home-buyers)
+
+## 5. [Innovation in Building Products](https://news.panasonic.com/global/press/en191212-2) 
+
+Panasonic has introduced an innovative glazing solution that features a vacuum gap between two glass panes. This new technology significantly improves energy efficiency for glass facades, including windows and doors. It offers a practical solution for both new constructions and retrofits, contributing to faster achievement of net zero targets. Such advancement could play a crucial role in enhancing the sustainability of building projects in Australia.
+
+[Read more](https://news.panasonic.com/global/press/en191212-2) 
