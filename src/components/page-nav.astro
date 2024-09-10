@@ -11,22 +11,26 @@ const links = [
 ]
 ---
 
-<nav class="mx-auto mb-8 w-max">
+<nav aria-labelledby="menu" class="mx-auto mb-8 w-max">
   <ul
-    role="group"
+    id="menu"
+    role="menubar"
+    aria-label="site navigation"
     class="grid grid-flow-col auto-cols-fr px-1 py-1 border rounded-full bg-white uppercase text-sm tracking-wide"
   >
     {
       links.map((link) => (
-        <a
-          href={link.href}
+        <li
+          role="none"
           class={cn(
             "text-center hover:text-gray-900 p-1 px-4 rounded-full ",
             link.active ? "bg-stone-100" : "hover:bg-zinc-100",
           )}
         >
-          <li>{link.title}</li>
-        </a>
+          <a role="menuitem" href={link.href}>
+            {link.title}
+          </a>
+        </li>
       ))
     }
   </ul>

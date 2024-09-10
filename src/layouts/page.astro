@@ -61,8 +61,11 @@ import Fonts from "../components/fonts.astro"
   >
     <PageNav />
 
-    <header class="text-center flex flex-col gap-2 px-2">
-      <h1>
+    <header
+      class="text-center flex flex-col gap-2 px-2"
+      aria-labelledby="site-header"
+    >
+      <h1 id="site-header">
         <SiteLogo />
       </h1>
     </header>
