@@ -36,3 +36,5 @@ The latest housing industry report indicates that more First Home Buyers enterin
 Panasonic has introduced an innovative glazing solution that features a vacuum gap between two glass panes. This new technology significantly improves energy efficiency for glass facades, including windows and doors. It offers a practical solution for both new constructions and retrofits, contributing to faster achievement of net zero targets. Such advancement could play a crucial role in enhancing the sustainability of building projects in Australia.
 
 [Read more](https://news.panasonic.com/global/press/en191212-2) 
+
+
