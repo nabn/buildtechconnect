@@ -65,10 +65,12 @@ const {
       upcoming event{_allEventsMeta.count > 1 ? "s" : ""}.
     </p>
   </div>
-  <ul role="list" class="flex flex-col gap-4 mt-4">
+  <ul role="list" aria-label="upcoming events" class="flex flex-col gap-4 mt-4">
     {
       allEvents.map((event) => (
-        <li>
+        <li
+          aria-labelledby={"listing-title-" + event.title.replaceAll(" ", "-")}
+        >
           <EventListing event={event} />
         </li>
       ))

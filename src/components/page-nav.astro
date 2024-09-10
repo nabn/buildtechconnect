@@ -11,10 +11,11 @@ const links = [
 ]
 ---
 
-<nav aria-label="Build Tech Connect" class="mx-auto mb-8 w-max">
+<nav aria-labelledby="menu" class="mx-auto mb-8 w-max">
   <ul
+    id="menu"
     role="menubar"
-    aria-label="Build Tech Connect"
+    aria-label="site navigation"
     class="grid grid-flow-col auto-cols-fr px-1 py-1 border rounded-full bg-white uppercase text-sm tracking-wide"
   >
     {
@@ -23,10 +24,12 @@ const links = [
           role="none"
           class={cn(
             "text-center hover:text-gray-900 p-1 px-4 rounded-full ",
-            link.active ? "bg-stone-100" : "hover:bg-zinc-100"
+            link.active ? "bg-stone-100" : "hover:bg-zinc-100",
           )}
         >
-          <a role="menuitem" href={link.href}>{link.title}</a>
+          <a role="menuitem" href={link.href}>
+            {link.title}
+          </a>
         </li>
       ))
     }
