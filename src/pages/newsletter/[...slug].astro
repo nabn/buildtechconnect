@@ -2,6 +2,8 @@
 import { getCollection, getEntry } from "astro:content"
 import PageLayout from "@/layouts/page.astro"
 import SiteFooter from "@/components/site-footer.astro"
+import { getMonth } from "@/lib/datetime"
+import SiteLogo from "@/components/site-logo.astro"
 const slug = Astro.params.slug
 if (!slug) {
   throw new Error("No slug provided")
@@ -19,6 +21,12 @@ export const getStaticPaths = async () =>
 
 <PageLayout title={entry?.slug}>
   <article class="prose bg-stone-50 p-4 rounded-lg">
+    <p>
+      Welcome to the {getMonth(entry.data.date)} edition of the
+      <SiteLogo className="text-sm sm:text-sm" />
+      newsletter, where we bring you the top five most relevant updates in the Australian
+      building and housing industry. Stay ahead of the curve with just the essentials.
+    </p>
     {rendered && <rendered.Content />}
   </article>
   <hr class="my-4" />

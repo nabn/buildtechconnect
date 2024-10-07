@@ -2,9 +2,8 @@
 import { getCollection } from "astro:content"
 import PageLayout from "@/layouts/page.astro"
 import { DateTime } from "luxon"
-const allPosts = await getCollection("newsletter")
+const allPosts = (await getCollection("newsletter")).sort((x, y) => y.data.date - x.data.date)
 import SiteFooter from "@/components/site-footer.astro"
-// import NewsletterSubscriptionForm from "@/components/newsletter-subscription-form.astro"
 ---
 
 <PageLayout title="Newsletter">
@@ -26,6 +25,5 @@ import SiteFooter from "@/components/site-footer.astro"
       ))
     }
   </ul>
-  <!-- <NewsletterSubscriptionForm /> -->
   <SiteFooter />
 </PageLayout>
