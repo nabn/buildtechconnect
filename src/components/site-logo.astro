@@ -1,4 +1,10 @@
-<span class="font-bold font-sans text-2xl sm:text-4xl antialiased text-textFg">
+---
+const { className } = Astro.props
+---
+
+<span
+  class={`font-bold font-sans text-2xl sm:text-4xl antialiased text-textFg ${className}`}
+>
   Build<span class="text-sky-600">·</span>Tech<span class="text-sky-600">·</span
   >Connect
 </span>

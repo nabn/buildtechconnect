@@ -13,14 +13,6 @@
   is:inline
   async
   src="https://scripts.simpleanalyticscdn.com/auto-events.js"></script>
-<script>
-  function addMetadata(data: { type: "event" | "page"; path: string }) {
-    if (data.type === "event") {
-      return { path: data.path }
-    }
-    return {}
-  }
-</script>
 
 <div class="flex justify-center py-2">
   <a
