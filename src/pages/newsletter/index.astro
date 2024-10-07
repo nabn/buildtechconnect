@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content"
 import PageLayout from "@/layouts/page.astro"
 import { DateTime } from "luxon"
-const allPosts = (await getCollection("newsletter")).sort((x, y) => y.data.date - x.data.date)
+const allPosts = (await getCollection("newsletter")).sort((x, y) => y.data.date > x.data.date ? 1 : -1)
 import SiteFooter from "@/components/site-footer.astro"
 ---
 
