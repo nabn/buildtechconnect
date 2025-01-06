@@ -22,7 +22,7 @@ export const getStaticPaths = async () =>
 <PageLayout title={entry?.slug}>
   <article class="prose bg-stone-50 p-4 rounded-lg">
     <p>
-      Welcome to the {getMonth(entry.data.date)} edition of the
+      Welcome to the {getMonth(entry?.data?.date)} edition of the
       <SiteLogo className="text-sm sm:text-sm" />
       newsletter, where we bring you the top five most relevant updates in the Australian
       building and housing industry. Stay ahead of the curve with just the essentials.

@@ -6,5 +6,5 @@ export const formatTime = (date: DateTime) =>
 export const parseAuDate = (date: string) =>
   DateTime.fromJSDate(new Date(date), { zone: "Australia/Sydney" })
 
-export const getMonth = (date: Date) =>
-  DateTime.fromJSDate(date).toFormat("LLLL")
+export const getMonth = (date?: Date) =>
+  date ? DateTime.fromJSDate(date).toFormat("LLLL") : ""
